@@ -6,7 +6,8 @@
                 {{ $authorData := index site.Data .Language.Lang "author" }}
                 {{ $author := cond (and $authorData $authorData.author) $authorData.author site.Params }}
                 {{ with $author }}
-                <a href="{{ absLangURL .Site.BaseURL }}" class="text-xl font-bold text-text-primary-light dark:text-text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-300">
+                <a href="{{ absLangURL .Site.BaseURL }}" class="flex items-center gap-2 text-xl font-bold text-text-primary-light dark:text-text-primary-dark hover:text-accent-light dark:hover:text-accent-dark transition-colors duration-300">
+                    {{ with .profile_image }}<img src="{{ . }}" alt="{{ $author.name }}" class="w-8 h-8 rounded-full object-cover">{{ end }}
                     {{ .name }}
                 </a>
                 {{ end }}
