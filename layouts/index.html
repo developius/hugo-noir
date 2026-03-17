@@ -170,28 +170,6 @@
     </section>
     {{ end }}
 
-    <!-- Projects Section -->
-    {{ $projectsData := index site.Data .Language.Lang "projects" }}
-    {{ $projects := cond (and $projectsData $projectsData.projects) $projectsData.projects site.Params.projects }}
-
-    {{ with $projects }}
-    <section class="mt-12 md:mt-20 mb-12 md:mb-20">
-        <div class="flex justify-between items-center mb-6 md:mb-8">
-            <h2 class="text-2xl md:text-4xl font-bold">{{ T "projectsTitle" }}</h2>
-        </div>
-        <div class="grid grid-cols-1 gap-6 md:gap-8 max-w-3xl mx-auto">
-            {{ range first 2 . }}
-            {{ partial "project-card.html" . }}
-            {{ end }}
-            <div class="flex justify-center mt-4 md:mt-8">
-                <a href="{{ "projects/" | absLangURL }}" class="text-blue-500 hover:text-blue-400 transition-colors duration-200 text-sm md:text-lg">{{ T "viewAll" }}</a>
-            </div>
-        </div>
-    </section>
-    {{ else }}
-    {{ warnf "No project data found for language %q. Please define either data/%s/projects.(yaml|toml|json) or params.projects in config." .Language.Lang .Language.Lang }}
-    {{ end }}
-
     <!-- Honors & Certifications -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20 mb-20 max-w-3xl mx-auto">
         <!-- Honors Section -->
