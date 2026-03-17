@@ -163,7 +163,7 @@
                 <div class="text-gray-400 text-xl mb-1">{{ .organization }}</div>
                 <p class="text-2xl font-semibold">{{ .role }}</p>
                 <p class="text-gray-400 font-semibold">{{ .period }}</p>
-                <p class="mt-2">{{ .description }}</p>
+                <div class="mt-2 prose dark:prose-invert prose-sm">{{ .description | markdownify }}</div>
             </div>
             {{ end }}
         </div>
